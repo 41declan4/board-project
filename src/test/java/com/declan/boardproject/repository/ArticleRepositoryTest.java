@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("JPA 테스트")
 @Import(JpaConfig.class)
+@Transactional
 @SpringBootTest
 class ArticleRepositoryTest {
 
@@ -28,18 +29,16 @@ class ArticleRepositoryTest {
     }
 
     @DisplayName("SELECT 테스트")
-    @Transactional
     @Test
     void 셀렉트테스트() {
         List<Article> articles = articleRepository.findAll();
 
         assertThat(articles)
                 .isNotNull()
-                .hasSize(0);
+                .hasSize(123);
     }
 
     @DisplayName("INSERT 테스트")
-    @Transactional
     @Test
     void 인설트테스트() {
         long prvCount = articleRepository.count();
@@ -50,7 +49,6 @@ class ArticleRepositoryTest {
     }
 
     @DisplayName("UPDATE 테스트")
-    @Transactional
     @Test
     void 업데이트테스트() {
         Article article = articleRepository.findById(1L).orElseThrow(new Supplier<IllegalArgumentException>() {
@@ -68,7 +66,6 @@ class ArticleRepositoryTest {
     }
 
     @DisplayName("DELETE 테스트")
-    @Transactional
     @Test
     void 들리트테스트() {
         Article article = articleRepository.findById(1L).orElseThrow(new Supplier<IllegalArgumentException>() {
