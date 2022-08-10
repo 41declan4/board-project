@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시글 페이지</title>
+</head>
+<body>
+
+    <header id="header"></header>
+
+    <main>
+        <header>
+            <h1>첫번째 글</h1>
+        </header>
+
+        <aside>
+            <p>Uno</p>
+            <p><a href="mailto:djkehh@gamil.com">uno@gmail.com</a></p>
+            <p><time datetime="2022-01-01T00:00:00">2022-01-01</time></p>
+            <p>#java</p>
+        </aside>
+
+        <section>
+
+            <p>본문<br /><br /></p>
+
+            <div>
+                <form action="">
+                    <label for="articleComment" hidden>댓글</label>
+                    <textarea name="articleComment" id="articleComment" rows="3" placeholder="댓글 쓰기.."></textarea>
+                    <button type="submit">쓰기</button>
+                </form>
+
+                <ul>
+                    <li>
+                        <div>
+                            <time><small>2022-01-01</small></time>
+                            <strong>Uno</strong>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci cum dolorum ducimus eius fuga iusto laboriosam laborum
+                                nemo neque pariatur perferendis perspiciatis quaerat, quo quos recusandae sapiente similique ullam!
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <time><small>2022-01-01</small></time>
+                            <strong>Uno</strong>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci cum dolorum ducimus eius fuga iusto laboriosam laborum
+                                nemo neque pariatur perferendis perspiciatis quaerat, quo quos recusandae sapiente similique ullam!
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <nav class="page-pagination" role="navigation">
+                <a href="#">이전 글</a>
+                <a href="#">다음 글</a>
+            </nav>
+
+        </section>
+
+    </main>
+
+    <footer id="footer"></footer>
+</body>
+</html>

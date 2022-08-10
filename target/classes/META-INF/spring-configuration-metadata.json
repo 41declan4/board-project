@@ -1,0 +1,19 @@
+{
+  "groups": [
+    {
+      "name": "spring.thymeleaf3",
+      "type": "com.declan.boardproject.config.ThymeleafConfig$Thymeleaf3Properties",
+      "sourceType": "com.declan.boardproject.config.ThymeleafConfig$Thymeleaf3Properties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.thymeleaf3.decoupled-logic",
+      "type": "java.lang.Boolean",
+      "description": "Use Thymeleaf 3 Decoupled Logic",
+      "sourceType": "com.declan.boardproject.config.ThymeleafConfig$Thymeleaf3Properties",
+      "defaultValue": false
+    }
+  ],
+  "hints": []
+}
