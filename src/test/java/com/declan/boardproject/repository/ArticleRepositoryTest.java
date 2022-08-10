@@ -2,6 +2,7 @@ package com.declan.boardproject.repository;
 
 import com.declan.boardproject.config.JpaConfig;
 import com.declan.boardproject.domain.Article;
+import com.declan.boardproject.domain.UserAccount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +23,18 @@ class ArticleRepositoryTest {
 
     private final ArticleRepository articleRepository;
     private final ArticleCommentRepository articleCommentRepository;
+    private final UserAccountRepository userAccountRepository;
 
-    public ArticleRepositoryTest(@Autowired ArticleRepository articleRepository, @Autowired ArticleCommentRepository articleCommentRepository) {
+    public ArticleRepositoryTest(@Autowired ArticleRepository articleRepository, @Autowired ArticleCommentRepository articleCommentRepository, @Autowired UserAccountRepository userAccountRepository) {
         this.articleRepository = articleRepository;
         this.articleCommentRepository = articleCommentRepository;
+        this.userAccountRepository = userAccountRepository;
     }
 
     @DisplayName("SELECT 테스트")
     @Test
     void 셀렉트테스트() {
+
         List<Article> articles = articleRepository.findAll();
 
         assertThat(articles)
@@ -42,7 +46,10 @@ class ArticleRepositoryTest {
     @Test
     void 인설트테스트() {
         long prvCount = articleRepository.count();
-        articleRepository.save(Article.of("new article", "new content", "#spring"));
+        UserAccount userAccount = userAccountRepository.save(UserAccount.of("uno", "pw", null, null, null));
+        Article article = Article.of(userAccount, "new article", "new content", "#spring");
+
+        articleRepository.save(article);
 
         assertThat(articleRepository.count()).isEqualTo(prvCount + 1);
 

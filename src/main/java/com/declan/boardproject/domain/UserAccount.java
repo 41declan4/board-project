@@ -35,18 +35,33 @@ public class UserAccount extends AuditingFields {
     @Column(length = 100)
     private String nickname;
 
+    @Setter private String memo;
+
     protected UserAccount() {}
 
-    private UserAccount(Long id, String userId, String userPassword, String email, String nickname) {
+    private UserAccount(Long id, String userId, String userPassword, String email, String nickname, String memo) {
         this.id = id;
         this.userId = userId;
         this.userPassword = userPassword;
         this.email = email;
         this.nickname = nickname;
+        this.memo = memo;
     }
 
-    public static UserAccount of(Long id, String userId, String userPassword, String email, String nickname) {
-        return new UserAccount(id, userId, userPassword, email, nickname);
+    public static UserAccount of(Long id, String userId, String userPassword, String email, String nickname, String memo) {
+        return new UserAccount(id, userId, userPassword, email, nickname, memo);
+    }
+
+    private UserAccount(String userId, String userPassword, String email, String nickname, String memo) {
+        this.userId = userId;
+        this.userPassword = userPassword;
+        this.email = email;
+        this.nickname = nickname;
+        this.memo = memo;
+    }
+
+    public static UserAccount of(String userId, String userPassword, String email, String nickname, String memo) {
+        return new UserAccount(userId, userPassword, email, nickname, memo);
     }
 
     @Override
@@ -54,11 +69,11 @@ public class UserAccount extends AuditingFields {
         if (this == o) return true;
         if (!(o instanceof UserAccount)) return false;
         UserAccount that = (UserAccount) o;
-        return id != null && id.equals(that.id);
+        return userId != null && userId.equals(that.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(userId);
     }
 }
